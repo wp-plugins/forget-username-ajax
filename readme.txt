@@ -14,6 +14,8 @@ This plugin is used to retrive username by email.
 
 This plugin shows form to enter email Id and button to retrieve forgotten username.
 
+[Please share your Review. Thanks!]
+
 == Installation ==
 
 1. Upload from admin side, upload new plugin from Plugins -> Add New OR extract 'forget-username.zip' file in directory to your '/wp-content/plugins/' directory.
