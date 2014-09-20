@@ -31,7 +31,7 @@ This plugin display form to enter email Id to retrieve forgotten username.
 == Frequently Asked Questions ==
 
 = Compatible with all old versions of WordPress? =
-Yes, This plugin is compatible with all less than or equal 3.8.1 WordPress. I have tested up to 3.8.1
+Yes, This plugin is compatible with all less than or equal 3.9.2 WordPress. I have tested up to 3.9.2
 
 == Screenshots ==
 
