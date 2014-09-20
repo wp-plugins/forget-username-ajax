@@ -3,7 +3,7 @@ Contributors: aRCkimial
 Donate link: http://wordpress.arckimial.com/donate
 Tags: forget username, forget username - ajax, forgot username, widget, plugin,forget username form
 Requires at least: 3.0.1
-Tested up to: 3.8.1
+Tested up to: 3.9.2
 Stable tag: 3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
