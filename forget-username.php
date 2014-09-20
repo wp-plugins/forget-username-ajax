@@ -2,7 +2,7 @@
 /*
 Plugin Name: Forget Username - ajax
 Plugin URI: http://wordpress.arckimial.com
-Version: 0.1
+Version: 1.1
 Description: This plugin is developed to retrive forgetted username. To display forget username form , add <strong>[forget-username-form]</strong> in page or widget or copy and paste <strong>&lt;?php echo do_shortcode('[forget-username-form]');?&gt;</strong> in your code file. For more go to <strong>Settings &gt; Forget Username Plugin Settings </strong>
 Author: aRCkimial
 Author URI: http://arckimial.com 
@@ -17,6 +17,9 @@ add_option('fu_mail_header','Welcome to '.get_option('blogname').', you can acce
 add_option('fu_mail_footer','To access your account go to '.site_url());
 add_option('fu_submit_val','Get Username');
 add_option('fu_mail_body_lbl','Your Username');
+add_option('fu_mail_success','Mail is sent to your email Id');
+add_option('fu_mail_error','Mail sending fail');
+add_option('fu_mail_email_not_exist','Entered email Id is not registered with us');
 add_action("wp_ajax_my_username", "my_username");
 add_action("wp_ajax_nopriv_my_username", "my_username");
 
@@ -38,6 +41,9 @@ function forgetusername_form_shortcode() {
 	<input type="hidden" name="fu_mail_header" value="<?php echo get_option('fu_mail_header');?>" />
 	<input type="hidden" name="fu_mail_footer" value="<?php echo get_option('fu_mail_footer');?>" />
 	<input type="hidden" name="fu_mail_body_lbl" value="<?php echo get_option('fu_mail_body_lbl');?>" />
+    <input type="hidden" name="fu_mail_success" value="<?php echo get_option('fu_mail_success');?>" />
+    <input type="hidden" name="fu_mail_error" value="<?php echo get_option('fu_mail_error');?>" />
+    <input type="hidden" name="fu_mail_email_not_exist" value="<?php echo get_option('fu_mail_email_not_exist');?>" />
 	<p class="submit"><input type="submit" name="fu-submit" id="fu-submit" class="button button-primary button-large" value="<?php esc_attr_e(get_option('fu_submit_val')); ?>" /></p>
 	</form>
 <?php }
@@ -52,6 +58,9 @@ function fu_menu_options(){
 		update_option('fu_mail_footer',$_POST['fu_mail_footer']);
 		update_option('fu_submit_val',$_POST['fu_submit_val']);
 		update_option('fu_mail_body_lbl',$_POST['fu_mail_body_lbl']);
+		update_option('fu_mail_success',$_POST['fu_mail_success']);
+		update_option('fu_mail_error',$_POST['fu_mail_error']);
+		update_option('fu_mail_email_not_exist',$_POST['fu_mail_email_not_exist']);
 	}
 }
 
@@ -77,6 +86,24 @@ function fu_menu(){
 						<input type="text" name="fu_submit_val" value="<?php echo get_option('fu_submit_val');?>" />
 					</td>
 				  </tr>
+                  <tr>
+                  	<td width="25%" valign="top">Success Message</td>
+					<td width="75%">
+						<input type="text" name="fu_mail_success" size="53" value="<?php echo get_option('fu_mail_success');?>" />
+					</td>
+                  </tr>
+                  <tr>
+                  	<td width="25%" valign="top">Error Message</td>
+					<td width="75%">
+						<input type="text" name="fu_mail_success" size="53" value="<?php echo get_option('fu_mail_error');?>" />
+					</td>
+                  </tr>
+                  <tr>
+                  	<td width="25%" valign="top">Message If email not registered</td>
+					<td width="75%">
+						<input type="text" name="fu_mail_email_not_exist" size="53" value="<?php echo get_option('fu_mail_email_not_exist');?>" />
+					</td>
+                  </tr>
 				 </table>
 				</div>
 			</div>
@@ -101,7 +128,7 @@ function fu_menu(){
 					<td width="25%" valign="top">Mail Body label</td>
 					<td width="75%">
 						<input type="text"  name="fu_mail_body_lbl" value="<?php echo get_option('fu_mail_body_lbl');?>"/><br  />
-						<label>Display - <span><?php echo get_option('fu_mail_body_lbl');?></span> : {username}</label>
+						<label>Will Display - <span><?php echo get_option('fu_mail_body_lbl');?></span> : {username}</label>
 					</td>
 				  </tr>
 				  <tr>
@@ -110,6 +137,7 @@ function fu_menu(){
 						<textarea name="fu_mail_footer" rows="8" cols="50"><?php echo get_option('fu_mail_footer');?></textarea>
 					</td>
 				  </tr>
+                 
 			  </table>
 		  	</div>
 		  </div>
@@ -148,15 +176,15 @@ function my_username(){
 				add_filter( 'wp_mail_content_type','set_html_content_type' );
 
 				if(@wp_mail($r->user_email,$subject,$message))
-					echo '<p class="success">Please Check Your Mail Inbox, you get '.$message_b_lbl.' in mail</p>';
+					echo '<p class="success">'.get_option('fu_mail_success').'</p>';
 
 				else
-					echo '<p class="error">Mail sending Fail.</p>';
+					echo '<p class="error">'.get_option('fu_mail_success').'</p>';
 
 				remove_filter( 'wp_mail_content_type','set_html_content_type' );
 
 			}else{
-				echo '<p class="warning">Entered E-mail address is not registered</p>';
+				echo '<p class="warning">'.get_option('fu_mail_email_not_exist').'</p>';
 			}
 			
 		}else{

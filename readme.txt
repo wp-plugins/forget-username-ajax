@@ -1,7 +1,7 @@
 === Forget Username - ajax ===
 Contributors: aRCkimial
 Donate link: http://wordpress.arckimial.com/donate
-Tags: forget username, forget username - ajax, widget, plugin,forget username form
+Tags: forget username, forget username - ajax, forgot username, widget, plugin,forget username form
 Requires at least: 3.0.1
 Tested up to: 3.8.1
 Stable tag: 3.9
@@ -12,9 +12,13 @@ This plugin is used to retrive username by email.
 
 == Description ==
 
-This plugin shows form to enter email Id and button to retrieve forgotten username.
+This plugin display form to enter email Id to retrieve forgotten username.
 
-[Please share your Review. Thanks!]
+`Attributes`
+1. settings for button lable
+2. settings for success message
+3. settings for mail content
+
 
 == Installation ==
 
@@ -45,7 +49,9 @@ Yes, This plugin is compatible with all less than or equal 3.8.1 WordPress. I ha
 * Plugin Released
 
 == Upgrade Notice ==
-New Version is available.
+
+= 1.1 =
+* message settings are added
 
 == A brief Markdown Example ==
 
