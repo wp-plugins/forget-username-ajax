@@ -1,6 +1,5 @@
 === Forget Username - ajax ===
 Contributors: aRCkimial
-Donate link: http://wordpress.arckimial.com/donate
 Tags: forget username, forget username - ajax, forgot username, widget, plugin,forget username form
 Requires at least: 3.0.1
 Tested up to: 3.9.2
