@@ -95,7 +95,7 @@ function fu_menu(){
                   <tr>
                   	<td width="25%" valign="top">Error Message</td>
 					<td width="75%">
-						<input type="text" name="fu_mail_success" size="53" value="<?php echo get_option('fu_mail_error');?>" />
+						<input type="text" name="fu_mail_error" size="53" value="<?php echo get_option('fu_mail_error');?>" />
 					</td>
                   </tr>
                   <tr>
